@@ -175,61 +175,42 @@ for (const data of datas) {
       <p class="border-b border border-gray-500 border-dotted mt-2"></p>
       <div class="flex justify-between items-center mt-4">
        <span class="text-xs text-gray-500">Deadline:<br />${data.deadline}</span>
-        <span 
-         id="status-btn-${index}"  class="status-btn text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded btn btn-info">Completed</span>
+        <button
+         id="status-btn-${index}"  class="status-btn text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded btn btn-info">Completed</button>
       </div>
     </div>
   </div>
 `;
   getElement("tasks-container").appendChild(div);
-
-  /* let statusBtns = document.querySelectorAll(".status-btn");
-  for (i = 0; i < statusBtns.length; i++) {
-    statusBtns[i].addEventListener("click", function (e) {
-      const taskTitle =
-        this?.parentNode?.parentNode?.childNodes[3]?.textContent;
-      console.log(taskTitle);
-      let completedDiv = document.createElement("div");
-      console.log(completedDiv, "data.js", 79);
-      completedDiv.innerHTML = `
-<h2 class="my-3 border border-red-400 shadow-md p-3 rounded-md bg-gray-50">
-  You have Complete The Task Add Dark Mode at 12:48:15 PM
-</h2>
-`;
-      getElement("sidebar-card-container").appendChild(completedDiv);
-      this.classList.add("opacity-30");
-    });
-  }
-  console.log(statusBtns.length);
-  for (const btn of statusBtns) {
-    console.log(`btn`, btn);
-  } */
 }
 getElement("clear-history");
 
 eventHandler("clear-history", function () {
   getElement("sidebar-card-container").innerHTML = "";
+  location.reload();
 });
 let taskAssigned = getElement("task-assigned");
-console.log(taskAssigned, "data.js", 129);
 let tasksQuantity = datas.length;
 taskAssigned.innerText = `${tasksQuantity}`;
-let innertext = getInnerText("task-assigned");
-console.log(innertext, "data.js", 131);
+// let innertext = getInnerText("task-assigned");
 for (let i = 0; i < datas.length; i++) {
-  const btn = document.getElementById(`status-btn-${i}`);
+  const btn = document.getElementById(`status-btn-${i + 1}`);
 
   if (btn) {
-    // Ensure element exists before adding listener
     btn.addEventListener("click", function () {
+      let noti = Number(getInnerText("notification"));
+      console.log(noti, "data.js", 199);
       console.log(`Button ${i} clicked`);
-      // this.classList.add("opacity-30"); // Example action
       tasksQuantity--;
-
+      noti++;
+      getElement("notification").innerText = noti;
       taskAssigned.innerText = `${tasksQuantity}`;
 
       let text = this?.parentNode?.parentNode?.childNodes[3]?.textContent;
-      console.log(text, "data.js", 114);
+      alert(`Congratulations completed task ${text}`);
+      if (tasksQuantity < 1) {
+        alert("Congratulations All tasks completed");
+      }
 
       this.setAttribute("disabled", "");
       let completedDiv = document.createElement("div");

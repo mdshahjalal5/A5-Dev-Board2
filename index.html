@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DevBoard</title>
+    <link rel="shortcut icon" href="assets/theme-btn.png" type="image/x-icon">
   <link rel="stylesheet" href="" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +23,7 @@
       <div class="flex justify-center items-center gap-6">
         <div class="flex justify-center items-center gap-4 border border-purple-500 rounded-full px-4 py-2 bg-gray-200">
           <img class="w-6 h-6" src="assets/checkbox.png" alt="" />
-          <h1 class="text-2xl font-black">23</h1>
+          <h1 id="notification" class="text-2xl font-black">23</h1>
         </div>
         <div id="change-bg-btn" class="h-14 w-14 bg-gray-300 border border-purple-500 rounded-full flex justify-center items-center">
           <img class="w-10 h-10" src="assets/theme-btn.png" alt="" />
@@ -47,7 +48,7 @@
         </div>
         <!-- middle content -->
         <div class="flex-grow  rounded-xl py-7 px-3 bg-gradient-to-r from-blue-300 to-blue-500" ">
-            <div id=" discover-new" class="cursor-pointer flex gap-4 justify-center items-center">
+            <div id="discover-new" class="cursor-pointer flex gap-4 justify-center items-center">
           <div>
             <img class="w-14 h-14" src="assets/board.png" alt="">
           </div>
